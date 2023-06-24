@@ -1,0 +1,7 @@
+MJPG STREAM CONNECTION
+
+mjpg_streamer -i "input_uvc.so -d /dev/video0 -r 320x240 -f 10 -y -n" -o "output_http.so -w /usr/local/share/mjpg-streamer/www"
+
+DETECTION MODEL SETUP
+
+python3 TFLite_detection_stream.py --modeldir=./detection_model --labels=label_map.pbtxt --resolution=640x480 --streamurl=http://192.168.192.19:8080/?action=stream
